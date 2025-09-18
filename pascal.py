@@ -35,13 +35,16 @@ def _pascal_helper(current: int, max: int, row: list[int], max_value_size: int) 
         new_row: list[int] = [1, *sums, 1]
         _pascal_helper(current + 1, max, new_row, max_value_size)
 
-
 def main():
     if len(argv) == 2:
         try:
-            pascal_triangle(int(argv[1]))
+            rows = int(argv[1])
+            if rows < 1 or rows > 1023:
+                print("Fel: Ange ett tal mellan 1 och 1023.")
+                return
+            pascal_triangle(rows)
         except ValueError:
-            print("Program argument isn't a number!")
+            print("Fel: Programargumentet är inte ett giltigt heltal.")
     else:
         pascal_triangle(6)
 
